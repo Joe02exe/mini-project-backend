@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  username   String   @id @map("_id") @db.ObjectId
+  email      String
+  firstName  String?
+  lastName   String?
+  role       Role
+  birthDate  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  assignedTasks Task[]  @relation("assignedTasks")
+  createdTasks Task[]   @relation("createdTasks")
+}
+
+enum Role {
+  admin
+  user
+}
+
+model Task {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String
+  category             TaskCategory
+  assignedUser         User     @relation("assignedTasks", fields: [assignedUserUsername], references: [username])
+  createdUser          User     @relation("createdTasks", fields: [createdUserUsername], references: [username])
+  description          String 
+  status               Status 
+  assignedUserUsername String   @db.ObjectId
+  createdUserUsername  String   @db.ObjectId
+}
+
+
+enum TaskCategory {
+  frontend
+  backend
+  db
+  other
+}
+
+enum Status {
+  open
+  in_progress
+  done
+}
