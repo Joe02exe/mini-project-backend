@@ -26,11 +26,6 @@ export class UserController {
       return this.userService.getAllUsers();
     }
 
-    @Get('isAuthenticated')
-    async isAuthenticated(@Param('username') username : string, @Param('password') password : string) {
-      return this.userService.checkAuthorization(username, password);
-    }
-
     @Delete('delete/:id')
     deleteUser(@Param('id') id: string) {
       return this.userService.deleteUser(id);

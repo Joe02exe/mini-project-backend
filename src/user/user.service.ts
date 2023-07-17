@@ -56,14 +56,4 @@ export class UserService {
       throw new Error('Failed to update user.');
     }
   }
-
-  async checkAuthorization(username: string, password: string) : Promise<any> {
-    const user : User = await this.prisma.user.findFirst({
-        where : {username: username}
-    });
-    if (user?.password != password) {
-      throw new UnauthorizedException();
-    }
-    return user;
-  }
 }
