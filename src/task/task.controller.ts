@@ -23,7 +23,7 @@ export class TaskController {
       return this.taskService.deleteTask(id);
     }
 
-    @Put('update')
+    @Put('update/:id')
     updateUser(@Body() task : Task){
       return this.taskService.updateTask(task)
     }

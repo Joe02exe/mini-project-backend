@@ -13,7 +13,7 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-    constructor(private readonly userService: UserService) {}
+    constructor(private userService: UserService) {}
     
     @Post('add')
     async signupUser(@Body() user : User) {
@@ -24,6 +24,11 @@ export class UserController {
     @Get('getAll')
     async getAll() {
       return this.userService.getAllUsers();
+    }
+
+    @Get('isAuthenticated')
+    async isAuthenticated(@Param('username') username : string, @Param('password') password : string) {
+      return this.userService.checkAuthorization(username, password);
     }
 
     @Delete('delete/:id')

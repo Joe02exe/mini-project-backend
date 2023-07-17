@@ -16,6 +16,7 @@ model User {
   email      String
   firstName  String?
   lastName   String?
+  password   String
   role       Role
   birthDate  DateTime
   assignedTasks Task[]  @relation("assignedTasks")
