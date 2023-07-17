@@ -15,13 +15,13 @@ import { UserService } from './user.service';
 export class UserController {
     constructor(private readonly userService: UserService) {}
     
-    @Post('/add')
-    async signupUser(@Body() user) {
+    @Post('add')
+    async signupUser(@Body() user : User) {
       console.log(user)
       return this.userService.createUser(user);
     }
 
-    @Get('/getAll')
+    @Get('getAll')
     async getAll() {
       return this.userService.getAllUsers();
     }
@@ -32,7 +32,7 @@ export class UserController {
     }
 
     @Put('update/:id')
-    updateUser(@Body()  user : User){
+    updateUser(@Param('id') id: string, @Body() user : User){
       return this.userService.updateUser(user)
     }
 

@@ -1,5 +1,4 @@
 [{
-    "_id": "uuid1",
     "username": "john",
     "firstName": "John",
     "lastName": "Doe",
@@ -9,7 +8,6 @@
     "email": "test@gmail.com"
   },
   {
-    "_id": "uuid2",
     "username": "harry",
     "firstName": "Harry",
     "lastName": "Kane",
@@ -19,7 +17,6 @@
     "email": "test@gmail.com"
   },
   {
-    "_id": "uuid3",
     "username": "raheem",
     "firstName": "Raheem",
     "lastName": "Sterling",
@@ -29,7 +26,6 @@
     "email": "test@gmail.com"
   },
   {
-    "_id": "uuid4",
     "username": "mason",
     "firstName": "Mason",
     "lastName": "Mount",
