@@ -11,7 +11,11 @@ import {
 import { User, User as UserModel} from '@prisma/client';
 import { UserService } from './user.service';
 
-@Controller('user')
+type Simple = {
+  simple: string
+}
+
+@Controller('api/user')
 export class UserController {
     constructor(private userService: UserService) {}
     
@@ -31,8 +35,8 @@ export class UserController {
       return this.userService.deleteUser(id);
     }
 
-    @Put('update/:id')
-    updateUser(@Param('id') id: string, @Body() user : User){
+    @Put('update')
+    updateUser(@Body() user : User){
       return this.userService.updateUser(user)
     }
 

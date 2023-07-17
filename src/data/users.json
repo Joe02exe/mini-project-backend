@@ -1,5 +1,5 @@
 [{
-    "username": "john",
+    "_id": "john",
     "firstName": "John",
     "lastName": "Doe",
     "password": "passwd",
@@ -8,7 +8,7 @@
     "email": "test@gmail.com"
   },
   {
-    "username": "harry",
+    "_id": "harry",
     "firstName": "Harry",
     "lastName": "Kane",
     "password": "passwd",
@@ -17,7 +17,7 @@
     "email": "test@gmail.com"
   },
   {
-    "username": "raheem",
+    "_id": "raheem",
     "firstName": "Raheem",
     "lastName": "Sterling",
     "password": "passwd",
@@ -26,7 +26,7 @@
     "email": "test@gmail.com"
   },
   {
-    "username": "mason",
+    "_id": "mason",
     "firstName": "Mason",
     "lastName": "Mount",
     "password": "passwd",

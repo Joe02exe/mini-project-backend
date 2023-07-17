@@ -2,7 +2,7 @@ import { Body, Controller, Post, Get, Param, Delete, Put } from '@nestjs/common'
 import { TaskService } from './task.service';
 import { Task } from '@prisma/client';
 
-@Controller('task')
+@Controller('api/task')
 export class TaskController {
 
     constructor (private taskService : TaskService) {}
@@ -23,7 +23,7 @@ export class TaskController {
       return this.taskService.deleteTask(id);
     }
 
-    @Put('update/:id')
+    @Put('update')
     updateUser(@Body() task : Task){
       return this.taskService.updateTask(task)
     }
