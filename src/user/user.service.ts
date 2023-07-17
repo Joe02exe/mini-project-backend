@@ -9,13 +9,26 @@ export class UserService {
 
   async createUser(user: User): Promise<User> {
     try {
-      console.log("works!");
       const result = await this.prisma.user.create({ data: user });
       return result;
     } catch (error) {
 
-        console.error('Error creating user:', error);
+      console.error('Error creating user:', error);
       throw new Error('Failed to create user.');
+    }
+  }
+
+  async getUser(name: string) {
+    try {
+      const result = await this.prisma.user.findFirst({
+        where: { username: name },
+      });
+      console.log(result)
+      return result;
+    } catch (error) {
+
+        console.error('Error getting user:', error);
+      throw new Error('Failed to getuser.');
     }
   }
 
@@ -25,7 +38,7 @@ export class UserService {
       return result;
     } catch (error) {
 
-        console.error('Error fetching all users:', error);
+      console.error('Error fetching all users:', error);
       throw new Error('Failed to fetch users.');
     }
   }
@@ -56,4 +69,6 @@ export class UserService {
       throw new Error('Failed to update user.');
     }
   }
+
+
 }

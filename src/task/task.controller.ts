@@ -1,6 +1,7 @@
 import { Body, Controller, Post, Get, Param, Delete, Put } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { Task } from '@prisma/client';
+import { identity } from 'rxjs';
 
 @Controller('api/task')
 export class TaskController {
@@ -8,7 +9,7 @@ export class TaskController {
     constructor (private taskService : TaskService) {}
 
     @Post('add')
-    async signupUser(@Body() task : Task) {
+    async signupTask(@Body() task : Task) {
       console.log(task)
       return this.taskService.createTask(task);
     }
@@ -19,12 +20,12 @@ export class TaskController {
     }
 
     @Delete('delete/:id')
-    deleteUser(@Param('id') id: string) {
+    deleteTask(@Param('id') id: string) {
       return this.taskService.deleteTask(id);
     }
 
     @Put('update')
-    updateUser(@Body() task : Task){
+    updateTask(@Body() task : Task){
       return this.taskService.updateTask(task)
     }
 

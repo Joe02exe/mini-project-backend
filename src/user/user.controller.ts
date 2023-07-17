@@ -40,4 +40,10 @@ export class UserController {
       return this.userService.updateUser(user)
     }
 
+    @Get("get/:username")
+    getUser(@Param('username') username : string) {
+      console.log("in here")
+      return this.userService.getUser(username);
+      }
+
 }

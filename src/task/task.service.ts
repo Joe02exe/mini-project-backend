@@ -4,6 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class TaskService {
+  
 
     constructor(private prisma : PrismaService) {}
 
@@ -13,7 +14,7 @@ export class TaskService {
           return result;
         } catch (error) {
     
-            console.error('Error creating task:', error);
+          console.error('Error creating task:', error);
           throw new Error('Failed to create task.');
         }
       }
@@ -24,7 +25,7 @@ export class TaskService {
           return result;
         } catch (error) {
     
-            console.error('Error fetching all tasks:', error);
+          console.error('Error fetching all tasks:', error);
           throw new Error('Failed to fetch tasks.');
         }
       }
@@ -37,24 +38,24 @@ export class TaskService {
           return result;
         } catch (error) {
     
-            console.error('Error deleting task:', error);
+          console.error('Error deleting task:', error);
           throw new Error('Failed to delete task.');
         }
       }
     
       async updateTask(task: Task) {
         try {
+          const { id, ...updatedTask } = task;
           const result = await this.prisma.task.update({
-            where: { id: task.id },
-            data: task,
+            where: { id: id },
+            data: updatedTask,
           });
           return result;
         } catch (error) {
     
-            console.error('Error updating task:', error);
+          console.error('Error updating task:', error);
           throw new Error('Failed to update task.');
         }
-      }
+      }  
 
-    
 }
