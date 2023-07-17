@@ -4,7 +4,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "password": "passwd",
-    "birthDate": "2000-01-01",
+    "birthDate": { "$date": "1999-01-22T14:56:59.301Z" },
     "role": "admin",
     "email": "test@gmail.com"
   },
@@ -14,7 +14,7 @@
     "firstName": "Harry",
     "lastName": "Kane",
     "password": "passwd",
-    "birthDate": "1980-09-10",
+    "birthDate": { "$date": "2000-01-22T14:56:59.301Z" },
     "role": "user",
     "email": "test@gmail.com"
   },
@@ -24,7 +24,7 @@
     "firstName": "Raheem",
     "lastName": "Sterling",
     "password": "passwd",
-    "birthDate": "1997-06-01",
+    "birthDate": { "$date": "1998-01-28T14:56:59.301Z" },
     "role": "user",
     "email": "test@gmail.com"
   },
@@ -34,7 +34,7 @@
     "firstName": "Mason",
     "lastName": "Mount",
     "password": "passwd",
-    "birthDate": "2001-04-16",
+    "birthDate": { "$date": "2004-01-22T14:56:59.301Z" },
     "role": "admin",
     "email": "test@gmail.com"
   }]
