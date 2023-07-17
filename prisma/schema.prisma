@@ -12,7 +12,7 @@ datasource db {
 
 
 model User {
-  username   String   @id @map("_id") @db.ObjectId
+  username   String   @id  @map("_id")
   email      String
   firstName  String?
   lastName   String?
@@ -32,12 +32,12 @@ model Task {
   id                   String   @id @default(auto()) @map("_id") @db.ObjectId
   name                 String
   category             TaskCategory
-  assignedUser         User     @relation("assignedTasks", fields: [assignedUserUsername], references: [username])
-  createdUser          User     @relation("createdTasks", fields: [createdUserUsername], references: [username])
+  assignedUserU        User     @relation("assignedTasks", fields: [assignedUser], references: [username])
+  createdUserU         User     @relation("createdTasks", fields: [createdUser], references: [username])
   description          String 
   status               Status 
-  assignedUserUsername String   @db.ObjectId
-  createdUserUsername  String   @db.ObjectId
+  assignedUser         String   
+  createdUser          String 
 }
 
 
