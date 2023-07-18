@@ -2,8 +2,10 @@ import { Body, Controller, Post, Get, Param, Delete, Put } from '@nestjs/common'
 import { TaskService } from './task.service';
 import { Task } from '@prisma/client';
 import { identity } from 'rxjs';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('api/task')
+@ApiTags('task')
 export class TaskController {
 
     constructor (private taskService : TaskService) {}

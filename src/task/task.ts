@@ -1,4 +1,4 @@
-import { User } from "src/user/user.interface";
+import { User } from "src/user/user";
 import { IsDate, IsEmail, IsNotEmpty } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
 
@@ -40,6 +40,6 @@ export class Task {
     @ApiProperty()
     description: string;
     
-    @ApiProperty()
+    @ApiProperty({ enum: ['open', 'in_progress', 'done']})
     status: "open" | "in_progress" | "done";
 }
