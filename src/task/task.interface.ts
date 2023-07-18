@@ -1,5 +1,6 @@
 import { User } from "src/user/user.interface";
 import { IsDate, IsEmail, IsNotEmpty } from 'class-validator';
+import { ApiProperty } from "@nestjs/swagger";
 
 
 export enum TaskCategory {
@@ -11,21 +12,34 @@ export enum TaskCategory {
 
 export class Task {
 
+    @ApiProperty()
+
     id: string;
 
     @IsNotEmpty()
+    @ApiProperty()
+
+    @ApiProperty()
+
     name: string;
 
     @IsNotEmpty()
+    @ApiProperty()
+
+    @ApiProperty()
     category: TaskCategory;
 
     @IsNotEmpty()
+    @ApiProperty()
     assignedUser: User;
 
     @IsNotEmpty()
+    @ApiProperty()
     createdUser: User;
 
+    @ApiProperty()
     description: string;
     
+    @ApiProperty()
     status: "open" | "in_progress" | "done";
 }
