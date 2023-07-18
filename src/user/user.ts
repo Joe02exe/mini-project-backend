@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsEmail, IsNotEmpty, isEmail } from 'class-validator';
+import { IsDataURI, IsDate, IsDateString, IsEmail, IsNotEmpty, isEmail } from 'class-validator';
 
 export class User {
 
     @IsNotEmpty()
     @ApiProperty()
+    @Is
     username: string;
 
     @IsNotEmpty()
@@ -21,9 +22,8 @@ export class User {
     @ApiProperty()
     email: string;
 
-
-    @IsDate()
     @ApiProperty()
+    @IsDateString()
     birthDate: Date;
 
     role: 'admin' | 'user';

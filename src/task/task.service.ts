@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient, Task } from '@prisma/client';
+import { Task } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class TaskService {
 
     async createTask(task: Task): Promise<Task> {
         try {
-          const result = await this.prisma.task.create({ data: task });
+          const result = await this.prisma.task.create({data: task});
           return result;
         } catch (error) {
     

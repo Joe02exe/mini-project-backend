@@ -8,7 +8,7 @@ import {
     ParseIntPipe,
     Put,
   } from '@nestjs/common';
-import { User, User as UserModel} from '@prisma/client';
+import { User } from './user';
 import { UserService } from './user.service';
 import { ApiTags } from '@nestjs/swagger';
 

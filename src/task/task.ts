@@ -1,45 +1,39 @@
-import { User } from "src/user/user";
 import { IsDate, IsEmail, IsNotEmpty } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
+import { User } from 'src/user/user';
 
 
 export enum TaskCategory {
-    entry1 = "frontend",
-    entry2 = "backend",
-    entry3 = "db",
-    entry4 = "other"
+    "frontend",
+    "backend",
+    "db",
+    "other"
 }
 
 export class Task {
 
     @ApiProperty()
-
     id: string;
 
     @IsNotEmpty()
     @ApiProperty()
 
     @ApiProperty()
-
     name: string;
-
-    @IsNotEmpty()
-    @ApiProperty()
 
     @ApiProperty()
     category: TaskCategory;
 
-    @IsNotEmpty()
     @ApiProperty()
-    assignedUser: User;
+    assignedUser: string;
 
     @IsNotEmpty()
     @ApiProperty()
-    createdUser: User;
+    createdUser: string;
 
     @ApiProperty()
     description: string;
     
-    @ApiProperty({ enum: ['open', 'in_progress', 'done']})
+    @ApiProperty()
     status: "open" | "in_progress" | "done";
 }
