@@ -1,4 +1,6 @@
 import { User } from "src/user/user.interface";
+import { IsDate, IsEmail, IsNotEmpty } from 'class-validator';
+
 
 export enum TaskCategory {
     entry1 = "frontend",
@@ -7,12 +9,23 @@ export enum TaskCategory {
     entry4 = "other"
 }
 
-export interface Task {
+export class Task {
+
     id: string;
+
+    @IsNotEmpty()
     name: string;
+
+    @IsNotEmpty()
     category: TaskCategory;
+
+    @IsNotEmpty()
     assignedUser: User;
+
+    @IsNotEmpty()
     createdUser: User;
+
     description: string;
+    
     status: "open" | "in_progress" | "done";
 }
