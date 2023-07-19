@@ -4,24 +4,27 @@ import { User } from 'src/user/user';
 
 
 export enum TaskCategory {
-    "frontend",
-    "backend",
-    "db",
-    "other"
+    frontend = "frontend",
+    backend = "backend",
+    db = "db",
+    other = "other",
+  }
+  
+
+export enum Status {
+    open = "open",
+    in_progress = "in_progress",
+    done = "done",
 }
 
 export class Task {
 
-    @ApiProperty()
-    id: string;
-
-    @IsNotEmpty()
-    @ApiProperty()
+    id : string
 
     @ApiProperty()
     name: string;
 
-    @ApiProperty()
+    @ApiProperty({ enum: TaskCategory, default: TaskCategory.other})
     category: TaskCategory;
 
     @ApiProperty()
@@ -33,7 +36,6 @@ export class Task {
 
     @ApiProperty()
     description: string;
-    
-    @ApiProperty()
-    status: "open" | "in_progress" | "done";
+
+    status: Status;
 }

@@ -12,10 +12,6 @@ import { User } from './user';
 import { UserService } from './user.service';
 import { ApiTags } from '@nestjs/swagger';
 
-type Simple = {
-  simple: string
-}
-
 @Controller('api/user')
 @ApiTags('user')
 export class UserController {
@@ -23,7 +19,6 @@ export class UserController {
     
     @Post('add')
     async signupUser(@Body() user : User): Promise<User>  {
-      console.log(user)
       return this.userService.createUser(user);
     }
 
@@ -44,7 +39,6 @@ export class UserController {
 
     @Get("get/:username")
     getUser(@Param('username') username : string) {
-      console.log("in here")
       return this.userService.getUser(username);
       }
 

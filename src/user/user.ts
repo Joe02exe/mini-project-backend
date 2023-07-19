@@ -5,7 +5,6 @@ export class User {
 
     @IsNotEmpty()
     @ApiProperty()
-    @Is
     username: string;
 
     @IsNotEmpty()

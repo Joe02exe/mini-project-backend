@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './user';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UserService {
@@ -23,12 +23,11 @@ export class UserService {
       const result = await this.prisma.user.findFirst({
         where: { username: name },
       });
-      console.log(result)
       return result;
     } catch (error) {
 
-        console.error('Error getting user:', error);
-      throw new Error('Failed to getuser.');
+      console.error('Error getting user:', error);
+      throw new Error('Failed to get user.');
     }
   }
 

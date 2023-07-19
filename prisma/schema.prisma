@@ -35,7 +35,7 @@ model Task {
   assignedUserU        User     @relation("assignedTasks", fields: [assignedUser], references: [username])
   createdUserU         User     @relation("createdTasks", fields: [createdUser], references: [username])
   description          String 
-  status               Status 
+  status               Status   @default(open) 
   assignedUser         String   
   createdUser          String 
 }

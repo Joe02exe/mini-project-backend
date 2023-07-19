@@ -3,6 +3,8 @@ import { PrismaService } from './prisma/prisma.service';
 
 @Injectable()
 export class AppService {
-
-  constructor(private prisma: PrismaService) {}
+  
+  sayHello() {
+    return "Hello World!"
+  }
 }
