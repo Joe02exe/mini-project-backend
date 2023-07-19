@@ -18,4 +18,18 @@ describe('TaskService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should get all tasks', async () => {
+    const mockResult: any[] = [
+      { id: '1', name: 'Task 1' },
+      { id: '2', name: 'Task 2' },
+    ];
+  
+    jest.spyOn(prismaService.task, 'findMany').mockResolvedValue(mockResult)
+  
+    // Call the getAllTasks method from the service
+    const result = await service.getAllTasks();
+    expect(result).toEqual(mockResult);
+  });
+  
 });
