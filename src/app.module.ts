@@ -9,7 +9,8 @@ import { UserController } from './user/user.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, TaskController, UserController],
+  providers: [AppService, TaskService, UserService, PrismaService
+  ],
 })
 export class AppModule {}

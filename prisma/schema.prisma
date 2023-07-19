@@ -12,10 +12,10 @@ datasource db {
 
 
 model User {
-  username   String   @id  @map("_id")
-  email      String
-  firstName  String?
-  lastName   String?
+  username   String   @id  @map("_id") @default("")
+  email      String   
+  firstName  String
+  lastName   String
   password   String
   role       Role
   birthDate  DateTime

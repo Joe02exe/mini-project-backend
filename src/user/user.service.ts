@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './user';
 import { PrismaService } from '../prisma/prisma.service';
+import { validate } from 'class-validator';
 
 @Injectable()
 export class UserService {
@@ -9,10 +10,10 @@ export class UserService {
 
   async createUser(user: User): Promise<User> {
     try {
+      await validate(user)
       const result = await this.prisma.user.create({ data: user });
       return result;
     } catch (error) {
-
       console.error('Error creating user:', error);
       throw new Error('Failed to create user.');
     }
@@ -57,9 +58,10 @@ export class UserService {
 
   async updateUser(user: User) {
     try {
+      const { username, ...updateUser } = user;
       const result = await this.prisma.user.update({
         where: { username: user.username },
-        data: user,
+        data: updateUser,
       });
       return result;
     } catch (error) {
