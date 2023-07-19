@@ -13,3 +13,7 @@ export async function validateDTO<T extends object>(
         errors: await new Validator().validate(instance, { whitelist: true, ...validatorOptions }),
     };
 }
+
+export function stringified(errors: ValidationError[]): string {
+    return JSON.stringify(errors)
+  }
