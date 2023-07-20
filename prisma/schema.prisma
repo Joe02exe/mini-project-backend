@@ -32,8 +32,8 @@ model Task {
   id                   String   @id @default(auto()) @map("_id") @db.ObjectId
   name                 String
   category             TaskCategory
-  assignedUserU        User     @relation("assignedTasks", fields: [assignedUser], references: [username])
-  createdUserU         User     @relation("createdTasks", fields: [createdUser], references: [username])
+  assignedUserU        User     @relation("assignedTasks", fields: [assignedUser], references: [username], onDelete: Cascade)
+  createdUserU         User     @relation("createdTasks", fields: [createdUser], references: [username], onDelete: Cascade)
   description          String 
   status               Status   @default(open) 
   assignedUser         String   
