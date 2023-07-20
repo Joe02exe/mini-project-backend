@@ -27,9 +27,9 @@ export class UserController {
       return this.userService.getAllUsers();
     }
 
-    @Delete('delete/:id')
-    deleteUser(@Param('id') id: string) {
-      return this.userService.deleteUser(id);
+    @Delete('delete/:username')
+    deleteUser(@Param('username') username: string) {
+      return this.userService.deleteUser(username);
     }
 
     @Put('update')

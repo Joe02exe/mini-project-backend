@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TaskController } from './task.controller';
 import { TaskService } from './task.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { Status, TaskCategory } from './task';
+import { Status, TaskCategory } from '@prisma/client';
 import { Task } from './task';
 
 describe('TaskController', () => {
@@ -28,7 +28,7 @@ describe('TaskController', () => {
   });
 
   describe('findAll', () => {
-    it('should return an array of cats', async () => {
+    it('should return an array of tasks', async () => {
       const result : Task[] = [{
         "id": "34144",
         "description": "This is the description for Task 1",
@@ -56,13 +56,13 @@ describe('TaskController', () => {
   describe('delete existing task', () => {
     it('should delete existing task', async () => {
       const result : Task = {
-        "id": "34144",
-        "description": "This is the description for Task 1",
-        "assignedUser": "john",
-        "createdUser": "mason",
-        "status": Status.done,
-        "name": "task1",
-        "category": TaskCategory.frontend
+        id: "34144",
+        description: "This is the description for Task 1",
+        assignedUser: "john",
+        createdUser: "mason",
+        status: Status.done,
+        name: "task1",
+        category: TaskCategory.frontend
       }
 
       jest.spyOn(service, 'deleteTask').mockResolvedValue(result);

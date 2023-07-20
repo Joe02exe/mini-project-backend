@@ -1,6 +1,5 @@
 import { User } from './user';
 import { stringified, validateDTO } from '../transfrom';
-import { Status, TaskCategory } from 'src/task/task';
 
 describe('User', () => {
   it('should be defined', () => {
@@ -38,7 +37,7 @@ describe('User', () => {
       email: "this@gmail.com",
       birthDate: new Date(1333333).toISOString()
     }
-    const {instance, errors} = await validateDTO(User, user)
+    const {errors} = await validateDTO(User, user)
     
     expect(errors.length).toBe(1);
     expect(stringified(errors)).toContain(`password should not be empty`)
@@ -54,7 +53,7 @@ describe('User', () => {
       email: "this@gmail.com",
       birthDate: new Date(1333333).toISOString()
     }
-    const {instance, errors} = await validateDTO(User, user)
+    const {errors} = await validateDTO(User, user)
     
     expect(errors.length).toBe(1);
     expect(stringified(errors)).toContain(`username should not be empty`)
@@ -70,7 +69,7 @@ describe('User', () => {
       email: "",
       birthDate: new Date(1333333).toISOString()
     }
-    const {instance, errors} = await validateDTO(User, user)
+    const {errors} = await validateDTO(User, user)
     
     expect(errors.length).toBe(1);
     expect(stringified(errors)).toContain(`email should not be empty`)
@@ -86,13 +85,11 @@ describe('User', () => {
       email: "this@gmail.com",
       birthDate: new Date(1333333).toISOString()
     }
-    const {instance, errors} = await validateDTO(User, user)
+    const {errors} = await validateDTO(User, user)
     
     expect(errors.length).toBe(2);
     expect(stringified(errors)).toContain(`firstName should not be empty`)
     expect(stringified(errors)).toContain(`lastName should not be empty`)
-
-    console.log(errors)
   })
 
   it("user should not be validated (wrong userRole)", async () => {
@@ -105,7 +102,7 @@ describe('User', () => {
       email: "this@gmail.com",
       birthDate: new Date(1333333).toISOString()
     }
-    const {instance, errors} = await validateDTO(User, user)
+    const {errors} = await validateDTO(User, user)
     
     expect(errors.length).toBe(1);
     expect(stringified(errors)).toContain(`role must be one of the following values: admin, user`)
@@ -117,11 +114,11 @@ describe('User', () => {
       firstName: "henry",
       lastName: "mr",
       password: "pw",
-      role: '',
+      role: "",
       email: "thisIsNotGmail.com",
       birthDate: new Date(1333333).toISOString()
     }
-    const {instance, errors} = await validateDTO(User, user)
+    const {errors} = await validateDTO(User, user)
     
     expect(errors.length).toBe(2);
     expect(stringified(errors)).toContain("email must be an email")

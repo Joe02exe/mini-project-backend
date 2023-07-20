@@ -10,7 +10,6 @@ export class UserService {
 
   async createUser(user: User): Promise<User> {
     try {
-      await validate(user)
       const result = await this.prisma.user.create({ data: user });
       return result;
     } catch (error) {
