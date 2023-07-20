@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTaskDto } from 'src/create-task-dto/create-task-dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { Task, TaskCategory } from './task';
+import { Task } from './task';
 
 @Injectable()
 export class TaskService {
@@ -9,16 +9,16 @@ export class TaskService {
 
     constructor(private prisma : PrismaService) {}
 
-    // async createTask(task: CreateTaskDto): Promise<CreateTaskDto> {
-    //     try {
-    //       const result = await this.prisma.task.create({data: task});
-    //       return result;
-    //     } catch (error) {
+    async createTask(task: CreateTaskDto): Promise<CreateTaskDto> {
+        try {
+          const result = await this.prisma.task.create({data: task});
+          return result;
+        } catch (error) {
     
-    //       console.error('Error creating task:', error);
-    //       throw new Error('Failed to create task.');
-    //     }
-    //   }
+          console.error('Error creating task:', error);
+          throw new Error('Failed to create task.');
+        }
+    }
     
       async getAllTasks() {
         try {
