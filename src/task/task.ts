@@ -1,33 +1,27 @@
-import { IsDate, IsEmail, IsNotEmpty } from 'class-validator';
+import { IsDate, IsEmail, IsNotEmpty, IsOptional } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
 import { User } from 'src/user/user';
+import { Transform } from 'class-transformer';
+import { Status, TaskCategory } from '@prisma/client';
 
 
-export enum TaskCategory {
-    frontend = "frontend",
-    backend = "backend",
-    db = "db",
-    other = "other",
-  }
-  
 
-export enum Status {
-    open = "open",
-    in_progress = "in_progress",
-    done = "done",
-}
 
 export class Task {
 
     id : string
 
     @ApiProperty()
+    @IsNotEmpty()
     name: string;
 
-    @ApiProperty({ enum: TaskCategory, default: TaskCategory.other})
-    category: TaskCategory;
+    @ApiProperty({ enum: TaskCategory})
+    @IsNotEmpty()
+    @IsOptional()
+    category: TaskCategory = TaskCategory.other;
 
     @ApiProperty()
+    @IsNotEmpty()
     assignedUser: string;
 
     @IsNotEmpty()
@@ -35,7 +29,9 @@ export class Task {
     createdUser: string;
 
     @ApiProperty()
+    @IsOptional()
     description: string;
 
-    status: Status;
+    @IsOptional()
+    status: Status = Status.open;
 }
